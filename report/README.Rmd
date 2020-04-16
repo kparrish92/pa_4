@@ -1,0 +1,94 @@
+---
+title  : 'Programming assignment 4'
+output: github_document
+
+---
+
+**Author**: Your name here  
+**Date**: Last update: `r Sys.time()`
+
+
+# Overview
+
+<!-- 
+  Talk brielfy about what you did here 
+  Describe your hypotheses
+-->
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+# Prep
+
+## Libraries
+
+```{r, 'load-libs', echo=T, warning=F, message=F}
+# Load libraries here
+
+```
+
+## Load data
+
+```{r, 'load-data'}
+# You need to get all the files in the 'data' directory and combine them
+# Check previous examples we did in class (hint: the day we did the ax 
+# experiment) or search for examples of stackoverflow.com
+
+```
+
+## Tidy data
+
+```{r, 'tidy-data'}
+# Convert from long to wide or wide to long format as necessary (check 
+# examples from class)
+# Create any other relevant variables here 
+
+```
+
+# Analysis
+
+## Descriptives
+
+```{r, 'descriptive-stats'}
+# Give some descriptive summaries of your data 
+# Display your descriptives in a table
+
+```
+
+## Visualization
+
+```{r, 'plots', fig.retina=2}
+# Include some plots here
+
+```
+
+## Hypothesis test
+
+```{r, 'stats'}
+# Conduct a simple statistical analysis here (optional)
+
+```
+
+
+# Conclusion
+
+<!-- 
+Revisit your hypotheses.
+Reflect on the entire process. 
+What did you enjoy? What did you hate? What did you learn? 
+What would you do differently?
+-->
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+</br></br>
