@@ -67,6 +67,20 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ```
 
+<!-- 
+Include a professional looking figure illustrating an example of the acoustics 
+of the production data.
+You decide what is relevant (something related to your hypothesis). 
+Think about where this file should be located in your project. 
+What location makes most sense in terms of organization? 
+How will you access the file (path) from this .Rmd file?
+If you need help consider the following sources: 
+  - Search 'Rmarkdown image' on google, stackoverflow, etc.
+  - Search the 'knitr' package help files in RStudio
+  - Search the internet for HTML code (not recommended, but it works)
+  - Check the code from my class presentations (may or may not be helpful)
+-->
+
 ## Hypothesis test
 
 ```{r, 'stats'}
@@ -78,7 +92,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 # Conclusion
 
 <!-- 
-Revisit your hypotheses.
+Revisit your hypotheses (refer to plots, figures, tables, statistical tests, 
+etc.)
+
 Reflect on the entire process. 
 What did you enjoy? What did you hate? What did you learn? 
 What would you do differently?
