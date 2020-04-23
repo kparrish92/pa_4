@@ -1,4 +1,4 @@
-####################################
+###################################
 # Praat script to extract values   #
 # Created by                       #
 # Joseph V. Casillas 10/26/2015    #
@@ -15,7 +15,7 @@
 
 # Which participant?
 form Select a participant
-	sentence fileID bi01
+	sentence fileID ne02
 endform
 
 # Where to save data
@@ -42,7 +42,7 @@ filePath$ = "../recordings/"+fileID$+"/wavs/"
 filedelete 'outputDir$'/'outFile$'
 
 # Create newfile with header
-fileappend 'outputDir$'/'outFile$' fileID,f1,f2,vot,notes'newline$'
+fileappend 'outputDir$'/'outFile$' fileID,participant,f1,f2,vot,'newline$'
 
 # -----------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ numberOfFiles = Get number of strings
 # Start loop ------------------------------------------------------------
 #
 
-#for file to numberOfFiles
+for file to numberOfFiles
 	select Strings dirFiles
 	fileName$ = Get string: file
 	prefix$ = fileName$ - ".wav"
@@ -104,7 +104,7 @@ numberOfFiles = Get number of strings
 	endif
 
 	# Append data to output 
-	fileappend 'outputDir$'/'fileID$'.csv 'prefix$','f1:2','f2:2','vot:2','labID$''newline$'
+	fileappend 'outputDir$'/'fileID$'.csv 'prefix$',ne02,'f1:2','f2:2','vot:2','labID$''newline$'
 
 	# Printline for bug fixes
 	printline 'prefix$','f1:2','f2:2','vot:2','labID$'

@@ -4,7 +4,7 @@ output: github_document
 
 ---
 
-**Author**: Your name here  
+**Author**: Parrish
 **Date**: Last update: `r Sys.time()`
 
 
@@ -15,12 +15,7 @@ output: github_document
   Describe your hypotheses
 -->
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+My hypothesis is that non-native speakers (ne groups) of Spanish will have a longer lag VOT for word-initial stop consonants than native speakers of Spanish (bi groups) in their production of Spanish-like pseudowords, due to the greater influence of English from the native English speakers.
 
 
 # Prep
@@ -30,23 +25,59 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 ```{r, 'load-libs', echo=T, warning=F, message=F}
 # Load libraries here
 
+library(tidyverse)
+library(untidydata)
+library(ggplot2)
+library(readr)
+library(dplyr)
+
+
 ```
 
 ## Load data
 
 ```{r, 'load-data'}
-# You need to get all the files in the 'data' directory and combine them
-# Check previous examples we did in class (hint: the day we did the ax 
-# experiment) or search for examples of stackoverflow.com
+
+bi01 <- read_csv("../data/bi01.csv")
+bi02 <- read_csv("../data/bi02.csv")
+bi03 <- read_csv("../data/bi03.csv")
+ne01 <- read_csv("../data/ne01.csv")
+ne02 <- read_csv("../data/ne02.csv")
+ne03 <- read_csv("../data/ne03.csv")
+
 
 ```
 
 ## Tidy data
 
 ```{r, 'tidy-data'}
-# Convert from long to wide or wide to long format as necessary (check 
-# examples from class)
-# Create any other relevant variables here 
+
+bilinguals = rbind(bi01,bi02,bi03)
+native_english = rbind(ne01,ne02,ne03)
+
+bilinguals[c(1:15, 46:60, 91:105), "consonant"] = "k"
+bilinguals[c(16:30, 61:75, 106:120), "consonant"] = "p"
+bilinguals[c(31:45, 76:90, 121:135), "consonant"] = "t"
+bilinguals[c(1:135), "group"] = "bilingual"
+
+native_english[c(1:15, 46:60, 91:105), "consonant"] = "k"
+native_english[c(16:30, 61:75, 106:120), "consonant"] = "p"
+native_english[c(31:45, 76:90, 121:135), "consonant"] = "t"
+native_english[c(1:135), "group"] = "native_english"
+
+bilinguals <- bilinguals[-c(3,4,6)]
+native_english <- native_english[-c(3,4,6)]
+
+allgroups = rbind(bilinguals,native_english)
+
+
+bi01 = bi01[-15,]
+bilinguals = bilinguals[-15,]
+allgroups = allgroups[-15,]
+
+
+
+
 
 ```
 
@@ -58,12 +89,72 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 # Give some descriptive summaries of your data 
 # Display your descriptives in a table
 
+
+filter
+
+
+mean_vot_bi01 <- mean(bi01$vot)
+mean_vot_bi02 <- mean(bi02$vot)
+mean_vot_bi03 <- mean(bi03$vot)
+mean_vot_ne01 <- mean(ne01$vot)
+mean_vot_ne02 <- mean(ne02$vot)
+mean_vot_ne03 <- mean(ne03$vot)
+mean_vot_bilinguals <- mean(bilinguals$vot)
+mean_vot_native_english <- mean(bilinguals$vot)
+
+Mean_vot_bilinguals = rbind(mean_vot_bi01,mean_vot_bi02,mean_vot_bi03)
+Mean_vot_native_english = rbind(mean_vot_ne01,mean_vot_ne02,mean_vot_ne03)
+
+standard_deviation_bi01 = sd(bi01$vot)
+standard_deviation_bi02 = sd(bi02$vot)
+standard_deviation_bi03 = sd(bi03$vot)
+standard_deviation_ne01 = sd(ne01$vot)
+standard_deviation_ne02 = sd(ne02$vot)
+standard_deviation_ne03 = sd(ne03$vot)
+
+standard_deviation_all = rbind(standard_deviation_bi01,standard_deviation_bi02,standard_deviation_bi03,standard_deviation_ne01,standard_deviation_ne02,standard_deviation_ne03)
+
+
+standard_deviation_native_english <- sd(native_english$vot)
+standard_deviation_bilinguals <- sd(bilinguals$vot)
+
+means_all_bilinguals = rbind(mean_vot_bi01,mean_vot_bi02,mean_vot_bi03)
+means_all_native_english = rbind(mean_vot_ne01,mean_vot_ne02,mean_vot_ne03)
+
+
+
+##Mean VOT per bilingual participant 
+
+knitr::kable(Mean_vot_bilinguals, caption = "Table 1 - Mean VOT of bilinguals")
+
+##Mean VOT per native english participant
+knitr::kable(Mean_vot_native_english, caption = "Table 2 - Mean VOT of Native English speakers")
+
+## Standard Deviation per participant
+
+
+
+knitr::kable(standard_deviation_all, caption = "Table 3 - Standard Deviation of all participants")
+  
+  
+##Mean VOT per letter per group
+
+knitr::kable
+
 ```
 
 ## Visualization
 
 ```{r, 'plots', fig.retina=2}
-# Include some plots here
+#Include some plots here
+
+## VOT Boxplot for both bilingual and Native English groups
+
+ggplot(data = allgroups, aes(x = consonant, y = vot, color = group)) + geom_boxplot() + labs(caption = "(Fig. 1)")
+
+ggplot(data = allgroups, aes(x = participant, y = vot, color = consonant)) + geom_boxplot()  + labs(caption = "(Fig. 2)")
+
+
 
 ```
 
@@ -86,8 +177,17 @@ If you need help consider the following sources:
 ```{r, 'stats'}
 # Conduct a simple statistical analysis here (optional)
 
+ 
 ```
+-->
 
+The original hypothesis (that L2 learners have a longer lag VOT than Spanish native speakers) seems to be supported on average by the data. The Figure 1 and tables 1-3 show that the average VOT for the NE group is longer than the BI group. 
+
+The consonant P and the participant NE01
+
+The consonant P data does not corroborate my prediction. Figure 1 shows that the NE and BI groups both have similar VOT for word initial p- Spanish psuedowords (around 20 seconds). However, the BI group has less varation overall in all consonants (table 3).
+
+Individual differences are also evident (figure 2) in the NE group. NE01 appeared to produce stop consonants in a more native-like manner than NE02 and NE03. A larger data set could aid in the ability to distinguish whether NE01 is an outlier in general, or if differences in Spanish proficiency could explain the production differences between NE01 and NE02 and NE03. 
 
 # Conclusion
 
@@ -100,11 +200,6 @@ What did you enjoy? What did you hate? What did you learn?
 What would you do differently?
 -->
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+On average, native Spanish speakers produced word initial stops with a shorter lag VOT than native speakers of English who speak Spanish as a second language. Individual differences were noted in the NE (native English) group, and more  data is needed to better explain the potential cause of the differences in NE group.
 
 </br></br>
