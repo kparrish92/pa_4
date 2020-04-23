@@ -1,7 +1,7 @@
 Programming assignment 4
 ================
 
-**Author**: Parrish **Date**: Last update: 2020-04-23 11:19:10
+**Author**: Parrish **Date**: Last update: 2020-04-23 11:49:49
 
 # Overview
 
@@ -171,7 +171,7 @@ filter
     ## {
     ##     UseMethod("filter")
     ## }
-    ## <bytecode: 0x0000000015a717b8>
+    ## <bytecode: 0x0000000015a71dd8>
     ## <environment: namespace:dplyr>
 
 ``` r
@@ -352,7 +352,7 @@ knitr::kable
     ##         caption = caption, escape = escape, ...))
     ##     structure(res, format = format, class = "knitr_kable")
     ## }
-    ## <bytecode: 0x00000000121756d8>
+    ## <bytecode: 0x0000000012166460>
     ## <environment: namespace:knitr>
 
 ## Visualization
@@ -413,6 +413,10 @@ NE02 and NE03. A larger data set could aid in the ability to distinguish
 whether NE01 is an outlier in general, or if differences in Spanish
 proficiency could explain the production differences between NE01 and
 NE02 and NE03.
+
+*Note* An outlier was removed from Bi01 data, on the basis that the
+recording was muffled, and the word-initial stop was not heard, not
+measureable on the waveform/spectrogram.
 
 # Conclusion
 

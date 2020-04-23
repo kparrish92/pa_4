@@ -189,6 +189,8 @@ The consonant P data does not corroborate my prediction. Figure 1 shows that the
 
 Individual differences are also evident (figure 2) in the NE group. NE01 appeared to produce stop consonants in a more native-like manner than NE02 and NE03. A larger data set could aid in the ability to distinguish whether NE01 is an outlier in general, or if differences in Spanish proficiency could explain the production differences between NE01 and NE02 and NE03. 
 
+*Note* An outlier was removed from Bi01 data, on the basis that the recording was muffled, and the word-initial stop was not heard, not measureable on the waveform/spectrogram.
+
 # Conclusion
 
 <!-- 
